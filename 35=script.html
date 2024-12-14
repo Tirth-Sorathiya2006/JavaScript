@@ -1,0 +1,116 @@
+<!--Events in JavaScript. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events in JavaScript</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html,body{
+            background-color: black;
+        }
+
+        #div1, .insideDiv, .div3{
+            background-color: salmon;
+            height: 100px;
+            width: 100px;
+            border: 5px solid white;
+        }
+
+        #div2{
+            background-color: salmon;
+            height: 200px;
+            width: 200px;
+            border: 5px solid white;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- <div onclick="alert('clicked successfully!!!')"></div> //This is not recommanded to insert the event in the tag in case of vanila JavaScript -->
+
+   <div class="parent">
+    <div id="div1"></div>
+    <div id="div2">
+        <div class="insideDiv"></div>
+    </div>
+    <div class="div3"></div>
+
+   </div>
+    <script>
+        //Below method is also not recommanded
+        // document.querySelector('div').onclick = function(){
+        //     alert('clicked Successfully!!!');
+        // };
+
+        //Below method is recommanded for vanila JavaScript
+        // document.querySelector('#div1').addEventListener('click', function(){
+        //     alert('Clicked Successfully!!!');
+        // }, false); //Here third parameter is false if we not write the false then also the by default parameter is false.
+
+        // document.querySelector('#div2').addEventListener('click', function(eventObject){
+        //     console.log(eventObject);   
+        // }, false);
+
+        //====> Learn about below things : 
+        //Event typs
+        //timeStemp
+        //defaultPrevented
+        //target
+        //srcElement
+        //currentTarget
+        //clientX, clientY, screenX, screenY
+        //autkey, ctrlkey, shiftkey, keyCode
+
+        //Here third parameter is known as a "eventPropogation" by default it is "false" which is known as a "eventPublic" and if we are using "true" insend of false it is known as a "eventCapturing".
+
+        // document.querySelector('#div2').addEventListener('click', () => {
+        //     alert('Outside div is clicked.');
+        // }, false);
+
+        // document.querySelector('.insideDiv').addEventListener('click', () => {
+        //     alert('Inside div is clicked.');
+        // }, false);
+
+        //If we are providing the "eventPublic"(false) then we dget the alert from bottom to top.
+        //If we are clicking on the outside div then we get the alert of outside div is clicked.
+        //If we are clicking the inside div then first we get the alert as a inside div is clicked and after we get the alert as a outside div is clicked it is known as a "eventPropogation".
+
+        // document.querySelector('#div2').addEventListener('click', () => {
+        //     alert('Outside div is clicked.');
+        // }, true);
+
+        // document.querySelector('.insideDiv').addEventListener('click', () => {
+        //     alert('Inside div is clicked.');
+        // }, true);
+
+        //If we are providing the "eventCapturing"(true) then we dget the alert from top to bottom.
+        //If we are clicking on the outside div then we get the alert of outside div is clicked.
+        //If we are clicking the inside div then first we get the alert as a outside div is clicked and after we get the alert as a inside div is clicked it is known as a "eventPropogation".
+
+        //If we need to stop the eventPropogation then we are using the eventObject.stopPropogation();
+        // document.querySelector('.insideDiv').addEventListener('click', (eventObject) => {
+        //     alert('Inside div is clicked.');
+        //     eventObject.stopPropagation();
+        // }, false); //Similarly we can use stopPropogation(); in case of the "eventCapturing"(true) mode.
+
+        // document.querySelector('.div3').addEventListener('click', (eventObject) => {
+        //     eventObject.preventDefault();
+        //     console.log('I am div 3');
+        // });
+
+        document.querySelector('.parent').addEventListener('click', (e) => {
+            if(e.target.tagName === 'DIV'){
+            (e.target).remove();
+            }
+        });
+    </script>
+</body>
+</html>
