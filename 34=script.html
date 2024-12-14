@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+    <style>
+        * {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="languages">
+        <li>C</li>
+        <li>JavaScript</li>
+    </ul>
+
+    <script>
+
+        const ul = document.querySelector('.languages');
+        //In this function we need to traverse the whole tree to append the list item.
+        function addLanguage(languageName) {
+            const li = document.createElement('li');
+            li.innerText = `${languageName}`;
+            ul.appendChild(li);
+        }
+
+        addLanguage('C++');
+        addLanguage('Java');
+        addLanguage('Ruby');
+        addLanguage('Rust');
+
+
+        //In this function we not need to traverse the whole tree to append the list item.
+        function addOptimizeLanguage(languageName) {
+            const li = document.createElement('li');
+            li.appendChild(document.createTextNode(`${languageName}`));
+            ul.appendChild(li);
+        }
+
+        addLanguage('Kotlin');
+        addLanguage('Go');
+        addLanguage('React');
+        addLanguage('Angular');
+        addLanguage('Python');
+
+        //Edit and Remove
+
+        //Edit
+        const secondLang = document.querySelector('li:nth-child(2)');
+
+        const newLi = document.createElement('li');
+        newLi.innerText = 'Assambly';
+        secondLang.replaceWith(newLi); //replaceWith(newelementName); is use to replace the one element with newelement.
+
+        //Edit
+        const firstLang = document.querySelector('li:nth-child(1)');
+        firstLang.outerHTML = '<li>TypeScript</li>';
+
+        //Remove
+        const lastLang = ul.lastChild;
+        console.log(lastLang);
+        lastLang.remove(); //remove(); is use for the removing the element
+
+    </script>
+</body>
+
+</html>

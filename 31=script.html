@@ -1,0 +1,60 @@
+<!-- DOM -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM learning</title>
+    <style>
+        *{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-back">
+        <h1 id="heading">DOM learning in Java Script</h1>
+        <p id="pera">Lorem ipsum dolor sit amet. <span style="display: none;">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span> good.</p>
+    </div>
+    <script>
+        const heading = document.getElementById('heading');
+        console.log(heading);
+        
+        console.log(heading.getAttribute('id')); //It is provide the attribute value.
+        console.log(heading.setAttribute('class','title yo'));
+        console.log(heading.setAttribute('class','heading')); //We found that if already class is exist in perticular element then setAttribute is over write the value of class.
+        
+        heading.style.backgroundColor = 'salmon';
+        heading.style.padding = '10px';
+        heading.style.borderRadius = '20px';
+
+        console.log(heading.textContent);
+        console.log(heading.innerHTML);
+        console.log(heading.innerText);
+
+        //Difference between the innerText and innerContent
+
+        //innerContent is provide the actual value of the tag if it is under the style display : none or hidden then also it is show the orignal text but the innerText is only provide those value which is actuly visible in the document(website).
+
+        //Example : 
+        const peragraph = document.getElementById('pera');
+        console.log(pera);
+        
+        console.log(peragraph.textContent); //It is also provides the value inside the span tag even though it`s disply property is none.
+        console.log(peragraph.innerText);//It is provide the text without span beaccuse it`s display property is none.
+        console.log(peragraph.innerHTML);//It is provide also the tags which are present inside the tag.
+
+        //querySelector('.className, elementName, #idName'); It is provide the first element.
+        //querySelectorAll('.className, elementName, #idName'); It is provide all the element in "Node list" Node list and HTML collection are diffrent then the array because they are not holding all the properties of array.
+
+        //getElementsByClassName('className') is provide the elements in the HTML collection
+
+        //We can convert the HTML collection and Node list to array by using the Array.from(NodeList or HTML collection)
+    </script>
+</body>
+
+</html>

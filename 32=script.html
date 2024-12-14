@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+    <style>
+        *{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+<script>
+    const parentElement = document.querySelector('.parent');
+    console.log(parentElement);
+    console.log(parentElement.children); //It provida the HTML collection.
+    console.log(parentElement.children[0]); //It give us  <div class="day">Monday</div>
+
+    for(let i = 0; i < parentElement.children.length; i++){
+        console.log(parentElement.children[i].innerText);
+    }
+
+    console.log(parentElement.firstElementChild); //It is provide the first child of paraent element here it is <div class="day">Monday</div>
+
+    console.log(parentElement.lastElementChild); //It is provide the last child of the parent element here it is <div class="day">Thursday</div>
+    
+    const day1 = document.querySelector('.day');  //It is provide the first element which class is day.
+    console.log(day1); 
+    
+    console.log(day1.parentElement); //It is provide the parent element of the day1.
+
+    console.log(day1.nextElementSibling); //It is provide the sibling of the day1.Here we get the sibling as a tuesday div.
+
+    console.log("NODES : ", parentElement.childNodes); //It is provide the NODE list here for the parentElement.It counts chids and line break also so it is comlex tree structure.
+    
+
+    
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!-- creating the html elements -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+    <style>
+        *{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const div = document.createElement('div');
+        console.log(div);
+        
+        div.className = 'main'; //It is use to set the class in the perticular element.
+        div.id = 'myId'; //It is use to set the id in the perticular element.
+
+        div.setAttribute('title', 'myTitle'); //It is use to set the custom attributs on perticular element.
+
+        // div.innerText = 'My name is Tirth';
+        const addText = document.createTextNode('My name is Tirth.'); //It is more preefareble then the innerText.
+        div.appendChild(addText); //appendChild is use for add the child in the perticular element
+
+        //Attech the element in the document.
+        document.body.appendChild(div); //It is adding the div in the body.
+
+    </script>
+</body>
+</html>
