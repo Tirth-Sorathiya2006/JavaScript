@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratice of XMLHttpRequest</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main{
+            border: 2px solid black;
+            border-radius: 20px;
+            padding: 3vw;
+        }
+
+        main .photo {
+            height: 15vw;
+            width: 10vw;
+            border: 1px solid black;
+            margin-bottom: 2vw;
+        }
+
+        .photo img {
+            height: 15vw;
+            width: 10vw;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        main .followers{
+            text-align: center;
+            font-weight: 700;
+        }
+
+        @media (width < 700px) {
+            main{
+            padding: 4vh;
+        }
+
+        main .photo {
+            height: 17vh;
+            width: 12vh;
+            margin-bottom: 3vh;
+        }
+
+        .photo img {
+            height: 17vh;
+            width: 12vh;
+        }
+
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- ====> container div is provide the card like structure. -->
+        <div class="container">
+            <!-- ====> photo div is hold the image. -->
+            <div class="photo">
+                <img src="" alt="" srcset="">
+            </div>
+            <!-- ====> followers div is containing the total number of followers. -->
+            <div class="followers"></div>
+
+        </div>
+    </main>
+    <script>
+        const requestUrl = 'https://api.github.com/users/hiteshchoudhary';
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('GET', requestUrl);
+        xhr.send();
+
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                const responseObject = JSON.parse(xhr.responseText);
+
+                const img = document.querySelector('img');
+                img.setAttribute('src', responseObject.avatar_url);
+
+                document.querySelector('.followers').innerText = `Followers = ${responseObject.followers}`;
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

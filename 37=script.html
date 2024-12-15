@@ -1,0 +1,170 @@
+<!-- API(Application Programming Interface) in JavaScript -->
+
+
+<!-- ### HTTP Request  
+An **HTTP request** is a way for your browser or app to ask a server for something, like a webpage or data. It consists of:  
+- **Method**: What you want (e.g., GET to fetch data, POST to send data).  
+- **URL**: Where you’re asking (e.g., `example.com/data`).  
+- **Headers**: Extra information (e.g., security tokens).  
+- **Body**: Data you send (only for methods like POST).
+
+### API (Application Programming Interface)  
+An **API** is a set of rules that lets one app talk to another. For example, when an app fetches weather data, it uses an API. APIs often send and receive data in formats like **JSON** or **XML**.
+
+### XMLHttpRequest (XHR)  
+An **XMLHttpRequest** is a tool in JavaScript that lets web pages interact with servers without reloading.  
+- Example: Loading new comments on a post without refreshing the page.  
+- It's used to send HTTP requests and handle responses, often with APIs.
+
+Today, developers mostly use **Fetch API** instead of XHR because it's simpler and more modern. -->
+
+<!-- Old way to featch the data from surevere -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XMLHttpRequest</title>
+ </head>
+ <body style="background-color: #212121; color: white;">
+    
+ </body>
+ <script>
+//     const requestUrl = 'https://api.github.com/users/hiteshchoudhary';
+//   const xhr = new XMLHttpRequest();
+
+//   xhr.open('GET', requestUrl); //By default the async parameter which is third parameter of the open method is true.
+// //console.log(xhr.readyState); //The readyState property is use for the check the state of the request.
+//  xhr.onreadystatechange = function(){
+//     console.log(xhr.readyState);
+//  };
+//   xhr.send();
+
+const githubUrl = 'https://api.github.com/users/hiteshchoudhary'
+const xhr = new XMLHttpRequest();
+
+xhr.open('GET', githubUrl);
+xhr.send();
+
+xhr.onreadystatechange = () => {
+    if(xhr.readyState === 4){
+        console.log(xhr.responseText); //Hence we console.log() the deta which we 'GET' from the perticular URL.  
+        console.log(typeof xhr.responseText);
+        //NOTE : most of the time the data which is come from the surver is in form of string.
+        const dataFromServer = JSON.parse(xhr.responseText); //By using the JSON.parse we get the data in form of JSON(object type).
+        console.log(dataFromServer.followers);
+        
+    }
+}
+  
+ </script>
+ </html>
+
+
+ <!-- XML (eXtensible Markup Language)
+XML is a format used to store and organize data in a way that is easy to read and share across systems. It uses tags (similar to HTML) to structure the data.
+
+Key Features:
+Self-descriptive: You define your own tags, like <name> or <age>.
+Hierarchy: Data is stored in a tree structure with nested tags.
+Widely Used: Often used for configuration files, APIs, or data sharing.
+Example of XML:
+
+<person>
+  <name>John</name>
+  <age>30</age>
+  <city>New York</city>
+</person>
+
+In this example:
+<person> is the main tag.
+Inside it are child tags <name>, <age>, and <city>.
+XML is not used as much now, with formats like JSON being simpler and more popular. -->
+
+<!-- 
+The open() method in XMLHttpRequest(XHR) is used to set up or configure a request before sending it to the server.
+
+Syntax:
+xhr.open(method, url, async);
+
+method: Specifies the type of HTTP request, like:
+GET (to fetch data)
+POST (to send data)
+url: The server URL or endpoint to send the request to (e.g., "https://example.com/data").
+
+async (optional): A boolean indicating whether the request should be asynchronous (default is true).
+true: The request runs in the background (non-blocking).
+false: The request pauses code execution until it's done (blocking, rarely used). -->
+
+<!-- The send() method in XMLHttpRequest (XHR) is used to actually send the HTTP request to the server after it has been set up using the open() method.
+
+Key Features of send():
+Starts the Request: It tells the browser to send the request (prepared with open()) to the server.
+Sends Data (if needed):
+For a GET request: No data is sent in the body; send() simply sends the request.
+For a POST request: You can include data (e.g., JSON or form data) in the body.
+
+Syntax:
+xhr.send([body]);
+
+Parameter:
+body (optional): The data you want to send to the server.
+If no data is needed (like in GET), this can be left empty or set to null.
+
+Example 1: Sending a GET Request
+let xhr = new XMLHttpRequest();
+xhr.open("GET", "https://api.example.com/data", true);
+xhr.send(); // No data is sent in the body for GET
+
+Example 2: Sending a POST Request with Data
+let xhr = new XMLHttpRequest();
+xhr.open("POST", "https://api.example.com/data", true);
+xhr.setRequestHeader("Content-Type", "application/json"); // Set headers
+xhr.send(JSON.stringify({ name: "John", age: 30 })); // Send JSON data in the body
+
+What Happens When send() is Called?
+The request is sent to the server.
+The browser waits for the server to respond.
+Once the server responds, you can handle the response using the onreadystatechange or onload event.
+In short, send() initiates communication between your app and the server. -->
+
+<!-- ### `readyState` Property  
+The **`readyState`** property in `XMLHttpRequest` represents the current status of the request. It lets you know what phase the request is in.  
+
+### `readyState` Values:
+1. **`0` (UNSENT)**: The request is created but not opened yet.  
+2. **`1` (OPENED)**: The `open()` method has been called.  
+3. **`2` (HEADERS_RECEIVED)**: The request has been sent, and the server has responded with HTTP headers.  
+4. **`3` (LOADING)**: The response is being downloaded (partial data is available).  
+5. **`4` (DONE)**: The request is complete, and the response is fully received. -->
+
+---
+
+<!-- ### `onreadystatechange` Event  
+The **`onreadystatechange`** is an event handler that is triggered every time the `readyState` of the `XMLHttpRequest` changes. It is often used to check when the request is complete (`readyState = 4`) and to process the server’s response.
+
+---
+
+### Example:
+```javascript
+let xhr = new XMLHttpRequest();
+xhr.open("GET", "https://api.example.com/data", true);
+
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === 4 && xhr.status === 200) { // Request complete and successful
+    console.log(xhr.responseText); // Log the server response
+  }
+};
+
+xhr.send(); // Send the request
+```
+
+---
+
+### Key Points:
+1. **`readyState`** tracks the progress of the request.  
+2. **`onreadystatechange`** listens for changes in `readyState` and allows you to handle each step.  
+3. Usually, developers check for `readyState === 4` to know when the response is fully received.
+
+This combination ensures your app can process the response only when it's ready. -->
