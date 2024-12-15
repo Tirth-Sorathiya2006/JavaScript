@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeOut - and - setInterval</title>
+</head>
+<body>
+    <h1>Async Part</h1>
+    <button id="stop">Stop</button>
+
+    <script>
+        // setTimeout(function(){
+        //     console.log('JavaScript');
+        // }, 2000); //It is run the function after given seconds of timeout.
+
+        // setInterval(function(){
+        //     console.log('Hi');    
+        // }, 2000) //It is run the code after the given seconds and it is run the code after given interval.
+
+        const changeText = function(){
+            document.querySelector('h1').innerText = 'JavaScript is best language.';
+        }
+       const changMe = setTimeout(changeText, 2000);
+       
+        document.querySelector('#stop').addEventListener('click', () => {
+            clearTimeout(changMe);//clearTimeout is ise for clear the setTimeout() function It is take the reffrence of the setTimeout function as a parameter.
+            console.log('stopped');
+            
+        });
+
+        // clearInterval(raference of setInterval function); //It is use for the stop the setInterval() function.
+    </script>
+</body>
+</html>
