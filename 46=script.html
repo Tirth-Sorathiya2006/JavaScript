@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>try and catch</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // let a = prompt('Enter a : ');
+    // let b = prompt('Enter b : ');
+
+    //Error Generating : 
+
+    // if (isNaN(a) || isNaN(b)) {
+    //     throw (alert("Please enter valid and integer values!!!")); //It is basicaly provide the massage of error occuring.
+    // } else {
+    //     let sum = parseInt(a) + parseInt(b);
+    //     console.log(`The sum is : ${sum}`);
+    // }
+
+    //Error handling : 
+
+    // let a = prompt('Enter a : ');
+    // let b = prompt('Enter b : ');
+
+    // try {
+    //     let sum = parseInt(a) + parseInt(b);
+    //     console.log(`The sum is : ${sum}`); //Here the code inside the try block is run because there is no error in this code.
+    // } catch (error) {
+    //     console.log('Error is occured!!!');
+    // }
+
+
+    // let a = prompt('Enter a : ');
+    // let b = prompt('Enter b : ');
+
+    // try {
+    //     let sum = parseInt(a) + parseInt(b);
+    //     console.log(`The sum is : ${sum + x}`); //Here the code inside the catch block is run because there is error in the try block code.In try block code x is not defined.
+    // } catch (error) {
+    //     console.log('Error is occured!!!');
+    // }
+
+    //Code console.log('Data base is closed.') without finally statment
+
+    function check() {
+        let a = prompt('Enter a : ');
+        let b = prompt('Enter b : ');
+
+        try {
+            let sum = parseInt(a) + parseInt(b);
+            console.log(`The sum is : ${sum}`); //Here the code inside the catch block is run because there is error in the try block code.In try block code x is not defined.
+            return true;
+        } catch (error) {
+            console.log('Error is occured!!!');
+            return false;
+        } 
+            console.log('Data base is closed.'); //Here finally statment is run if any try or catch is runs but if we only write console.log('Data base is closed'); then due to return statment we not get console.log('Data base is closed'); but in case of finally we get the code of finally block even return statment is present in try and catch.
+    }
+
+    check();
+
+
+    // function check() {
+    //     let a = prompt('Enter a : ');
+    //     let b = prompt('Enter b : ');
+
+    //     try {
+    //         let sum = parseInt(a) + parseInt(b);
+    //         console.log(`The sum is : ${sum}`); //Here the code inside the catch block is run because there is error in the try block code.In try block code x is not defined.
+    //         return true;
+    //     } catch (error) {
+    //         console.log('Error is occured!!!');
+    //         return false;
+    //     } finally{
+    //         console.log('Data base is closed.'); //Here finally statment is run if any try or catch is runs but if we only write console.log('Data base is closed'); then due to return statment we not get console.log('Data base is closed'); but in case of finally we get the code of finally block even return statment is present in try and catch.
+    //     }
+    // }
+
+    // check();
+
+</script>
+
+</html>
