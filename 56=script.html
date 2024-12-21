@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>closer and lexical scoping</title>
+</head>
+<body style="background-color: #212121;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+<script>
+  function clickHandlar(color){
+
+    return function(){
+        document.body.style.backgroundColor = `${color}`;
+    }
+  }
+
+  document.getElementById('orange').onclick = clickHandlar('orange');
+  document.getElementById('green').onclick = clickHandlar('green');
+  
+</script>
+</html>
